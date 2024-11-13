@@ -1,4 +1,5 @@
 import { Stack } from '@mui/material';
+import { SearchBar } from '../components/SearchBar';
 
 export const HomePage = () => {
     return (
