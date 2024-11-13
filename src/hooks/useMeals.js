@@ -5,7 +5,7 @@ export const useMeals = () => {
     const mealsCtx = useContext(MealContext)
 
     if (!mealsCtx) {
-        throw new Error("No movies found")
+        throw new Error("No melas found")
     }
     return mealsCtx
 }
