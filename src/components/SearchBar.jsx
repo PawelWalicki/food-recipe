@@ -3,10 +3,11 @@ import { useState } from "react"
 import { useMeals } from "../hooks/useMeals"
 
 export const SearchBar = () => {
-    const { setSearchInput, setFilterByIngridient } = useMeals()
+    const { setSearchInput, setFilterByIngridient, setSearch } = useMeals()
     const [input, setInput] = useState("")
 
     const searchMeals = () => {
+        setSearch({value: input, src: "input"})
         setSearchInput(input)
     }
 
@@ -30,10 +31,25 @@ export const SearchBar = () => {
                     color: "#000000",
                     backgroundColor: "#a9c100"
                 }}>Search</Button>
-                <button onClick={() => setFilterByIngridient("chicken_breast")}>Chicken</button>
-                <button onClick={() => setFilterByIngridient("pork")}>Pork</button>
-                <button onClick={() => setFilterByIngridient("beef")}>Beef</button>
-                <button onClick={() => setFilterByIngridient("salmon")}>Salmon</button>
+                <Button onClick={() => {setFilterByIngridient("chicken_breast"); setSearch({value:"chicken_breast", src:"button"})}} 
+                        variant="outlined" style={{
+                                            color: "#000000",
+                                            backgroundColor: "c"
+                }}>
+                    Chicken
+                </Button>
+                <Button onClick={() => setFilterByIngridient("pork")} variant="outlined" style={{
+                    color: "#000000",
+                    backgroundColor: "#a9c100"
+                }}>Pork</Button>
+                <Button onClick={() => setFilterByIngridient("beef")} variant="outlined" style={{
+                    color: "#000000",
+                    backgroundColor: "#a9c100"
+                }}>Beef</Button>
+                <Button onClick={() => setFilterByIngridient("salmon")} variant="outlined" style={{
+                    color: "#000000",
+                    backgroundColor: "#a9c100"
+                }}>Salmon</Button>
             </Grid2>
         </Container>
     )

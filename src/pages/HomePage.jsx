@@ -4,7 +4,7 @@ import { MealsList } from '../components/MealsList';
 
 export const HomePage = () => {
     return (
-        <div>
+        <div className='homePage'>
             <Stack spacing={2} sx={{ marginTop: '30px', justifyContent: "center", alignItems: "center" }}>
                 <SearchBar></SearchBar>
                 <MealsList></MealsList>
