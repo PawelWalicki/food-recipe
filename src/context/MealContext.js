@@ -4,11 +4,16 @@ export const MealContext = createContext(null)
 export const MealProvider = ({ children }) => {
     const [meals, setMeals] = useState([])
     const [searchInput, setSearchInput] = useState("")
-    const [newv, setNew] = useState({
+    const [search, setSearch] = useState({
         value: "",
         src: "input"
     })
     const [filterByIngridient, setFilterByIngridient] = useState("")
+
+    useEffect(() => {
+        console.log(search)
+    }, [search])
+
     useEffect(() => {
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
         const options = {
@@ -40,7 +45,7 @@ export const MealProvider = ({ children }) => {
 
     }, [filterByIngridient])
     return (
-        <MealContext.Provider value={{ meals, searchInput, setSearchInput, setFilterByIngridient }}>
+        <MealContext.Provider value={{ meals, searchInput, setSearchInput, setFilterByIngridient, setSearch }}>
             {children}
         </MealContext.Provider>
     )
