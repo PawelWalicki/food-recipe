@@ -1,5 +1,9 @@
+.mealDetails {
+    padding: 15px;
+}
+
 .nameMeal {
-    color:#a9c100
+    color: #a9c100
 }
 
 .buttonHome {
@@ -10,4 +14,10 @@
 
 .titleSections {
     text-align: center;
+    color: #a9c100;
+}
+
+.ingredientsName {
+    text-align: center;
+    color: darkgray;
 }
