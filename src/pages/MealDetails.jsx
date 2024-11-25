@@ -59,7 +59,7 @@ export const MealDetails = () => {
                     </div>
                 </Grid2>
                 <Grid2 size={6}>
-                    <div>
+                    <div className="ingredientsName">
                         <p className="titleSections">Ingredients</p>
                         <Grid2 container spacing={2}>
                             {generateIngredients()}
