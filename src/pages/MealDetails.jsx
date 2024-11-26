@@ -1,4 +1,4 @@
-import { Grid2, Button, ImageList } from "@mui/material";
+import { Grid2, Button, useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import './MealDetails.css'
@@ -6,6 +6,7 @@ import './MealDetails.css'
 export const MealDetails = () => {
     let { mealId } = useParams()
     let [meal, setMeal] = useState({})
+    const isMobile = useMediaQuery('(max-width:1100px)')
     useEffect(() => {
 
         const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
@@ -52,22 +53,24 @@ export const MealDetails = () => {
     return (
         <div className="mealDetails">
             <Grid2 container spacing={2}>
-                <Grid2 size={6}>
+                <Grid2 size="auto">
                     <div>
                         <h1 className="nameMeal">{meal.strMeal}</h1>
-                        <img height={400} src={meal.strMealThumb}></img>
+                        <img className="imgMeal" height={400} src={meal.strMealThumb}></img>
                     </div>
                 </Grid2>
-                <Grid2 size={6}>
+                <Grid2 size={isMobile ? 12 : "grow"}>
                     <div className="ingredientsName">
                         <p className="titleSections">Ingredients</p>
-                        <Grid2 container spacing={2}>
+                        <Grid2 container spacing={2} columns={"auto"}>
                             {generateIngredients()}
                         </Grid2>
                     </div>
                 </Grid2>
                 <Grid2 size={12}>
-                    <iframe src={generateYtLink(meal.strYoutube)} />
+                    <div className="ytLink">
+                        <iframe src={generateYtLink(meal.strYoutube)} />
+                    </div>
                     <p className="titleSections">Instructions</p>
                     <pre style={{
                         backgroundColor: "#f9f9f9",
@@ -75,7 +78,7 @@ export const MealDetails = () => {
                         borderRadius: "5px",
                         padding: "15px",
                         fontSize: "16px",
-                        fontFamily: "Roboto Mono",
+                        fontFamily: "Karla Variable",
                         lineHeight: "1.6",
                         whiteSpace: "pre-wrap",
                         wordWrap: "break-word",
